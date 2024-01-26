@@ -23,7 +23,8 @@ public class ExcelReader {
 
       // CONCAT ÖVNING - Skapa en ny kolumn för Full_Name
       Row headerRow = sheet.getRow(0);
-      Cell newHeaderCell = headerRow.createCell(headerRow.getLastCellNum());
+      int fullNameColumnIndex = headerRow.getLastCellNum(); // Index för den nya kolumnen
+      Cell newHeaderCell = headerRow.createCell(fullNameColumnIndex);
       newHeaderCell.setCellValue("Full_Name");
 
       for (Row row : sheet) {
@@ -42,7 +43,7 @@ public class ExcelReader {
 
         // CONCAT ÖVNING - Gå igenom varje rad och kombinera First_Name och Last_Name
         String fullName = firstName + " " + lastName;
-        Cell newCell = row.createCell(row.getLastCellNum());
+        Cell newCell = row.createCell(fullNameColumnIndex);
         newCell.setCellValue(fullName);
 
         // CONCAT ÖVNING - Vi har uppdaterat Customer för att inkludera "fullName"
